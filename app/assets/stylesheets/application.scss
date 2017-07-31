@@ -1,0 +1,27 @@
+.layout {
+  width: 980px;
+}
+.sidebar {
+  background: #C6DD7D;
+  width: 180px;
+  float: left;
+  padding: 5px;
+}
+.content {
+  background: #F4ECCE;
+  margin-left: 190px;
+}
+.color-checkboxes, .price-checkboxes, .material-checkboxes,
+.delivery-checkboxes, .condition-checkboxes, .weight-checkboxes {
+  padding-left: 10px;
+}
+.product {
+  margin: 10px;
+}
+.reset-filters {
+  margin: 15px 10px 0px 35px;
+}
+.number-input {
+  width: 30%;
+  display: inline;
+}

@@ -1,0 +1,96 @@
+<div class="layout">
+  <h1>Search filter</h1>
+  <div class="sidebar">
+    <span>Search by filter:</span>
+
+    <button class='reset-filters' ng-click="resetFilters()">Reset filters</button>
+
+    <div ng-repeat="propsHash in properties">
+      <div ng-repeat="(property, propertyValues) in propsHash">
+        <p>{{property}}:</p>
+        <div class="{{property}}-checkboxes">
+          <p ng-repeat="propertyValue in propertyValues">
+            <input type="checkbox" ng-click="selectProperty(property, propertyValue)" id="{{propertyValue}}">
+            <label for="{{propertyValue}}">{{propertyValue}}</label>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p>fragile:</p>
+      <div class="price-checkboxes">
+        <input type="checkbox" ng-click="selectProperty('fragile', 'true')" id="fragile">
+        <label for="fragile">fragile</label>
+      </div>
+    </div>
+
+    <div>
+      <p>fast delivery:</p>
+      <div class="price-checkboxes">
+        <input type="checkbox" ng-click="selectProperty('fast_delivery', 'true')" id="delivery">
+        <label for="delivery">fast delivery</label>
+      </div>
+    </div>
+
+    <div>
+      <p>availability:</p>
+      <div class="price-checkboxes">
+        <input type="checkbox" ng-click="selectProperty('amount', 'amount')" id="availability">
+        <label for="availability">in-stock</label>
+      </div>
+    </div>
+
+    <div>
+      <p>with discount:</p>
+      <div class="price-checkboxes">
+        <input type="checkbox" ng-click="selectProperty('discount', 'discount')" id="discount">
+        <label for="discount">with discount</label>
+      </div>
+    </div>
+
+    <div>
+      <p>price:</p>
+      <div class="price-checkboxes">
+        <input class="number-input" ng-model="propertyHash.price.min" type="number" size="20">
+        <span>-</span>
+        <input class="number-input" ng-model="propertyHash.price.max" type="number" size="20">
+        <input type="button" ng-click="startFilterRange()" value="OK">
+      </div>
+    </div>
+
+    <div>
+      <p>weight:</p>
+      <div class="price-checkboxes">
+        <input class="number-input" ng-model="propertyHash.weight.min" type="number" size="20">
+        <span>-</span>
+        <input class="number-input" ng-model="propertyHash.weight.max" type="number" size="20">
+        <input type="button" ng-click="startFilterRange()" value="OK">
+      </div>
+    </div>
+
+    <div>
+      <p>height:</p>
+      <div class="price-checkboxes">
+        <input class="number-input" ng-model="propertyHash.height.min" type="number" size="20">
+        <span>-</span>
+        <input class="number-input" ng-model="propertyHash.height.max" type="number" size="20">
+        <input type="button" ng-click="startFilterRange()" value="OK">
+      </div>
+    </div>
+
+    <button class='reset-filters' ng-click="resetFilters()">Reset filters</button>
+
+  </div>
+  <div class="content projects">
+    <div class="product" ng-repeat="product in products">
+      <h3>Product id: {{product.id}}, product name: {{product.name}}</h3>
+
+      <span ng-repeat="property in product.properties">
+        <strong ng-if="property.property_value">{{property.property_type}}: </strong>
+        <span ng-if="property.property_value">{{property.property_value}},</span>
+      </span>
+
+    </div>
+  </div>
+</div>

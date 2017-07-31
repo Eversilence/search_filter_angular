@@ -1,18 +1,14 @@
-#= require templates/books/index
-#= require templates/books/form
-#= require controllers/books-controller
+#= require templates/products/index
+#= require controllers/products-controller
 
-app = angular.module 'angular-rails-example', ['ngRoute', 'booksController', 'templates']
+app = angular.module 'angular-rails-example', ['ngRoute', 'productsController', 'templates', 'restangular']
 
 app.config ['$routeProvider', '$locationProvider', '$httpProvider',
   ($routeProvider, $locationProvider, $httpProvider) ->
     $routeProvider
       .when '/',
-        templateUrl: 'books/index.html'
-        controller : 'BooksController'
-      .when '/:id',
-        templateUrl: 'books/form.html'
-        controller : 'BookController'
+        templateUrl: 'products/index.html'
+        controller : 'ProductsController'
       .otherwise
         redirectTo: '/'
     $locationProvider.html5Mode true

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  namespace :api do
-    resources :books, except: :edit
+
+  namespace :api, defaults: { format: :json } do
+    resources :products, only: :index do
+      get 'search', on: :collection
+    end
+
+    resources :properties, only: [:index]
   end
 
-  get ':id' => 'welcome#index'
-  get 'new' => 'welcome#index'
-  root to: 'welcome#index'
+  root to: 'application#angular'
 end
